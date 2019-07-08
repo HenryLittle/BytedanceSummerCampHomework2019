@@ -13,11 +13,13 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.Menu
 import android.widget.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var count : Int = 0
+    private val TAG:String = "[DEBUG]"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,36 +49,42 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val checkBox = findViewById<CheckBox>(R.id.main_check_box)
         val editText = findViewById<EditText>(R.id.main_edit_text)
         val textView = findViewById<TextView>(R.id.main_edit_text_text_view)
-        var imageView = findViewById<ImageView>(R.id.main_image)
+        val imageView = findViewById<ImageView>(R.id.main_image)
 
         materialButton.setOnClickListener {
             count ++
             Toast.makeText(this, "Material Button is pressed $count times.", Toast.LENGTH_SHORT ).show()
+            Log.d(TAG, "Seems like our material button works just fine.")
         }
 
         radioButton.setOnClickListener {
             Toast.makeText(this, "Radio Button is checked", Toast.LENGTH_SHORT ).show()
+            Log.w("[WARNING]", "Radio? Radio active warning!")
         }
 
         checkBox.setOnCheckedChangeListener { _, isChecked ->
             Toast.makeText(this, "Check Box is now $isChecked.", Toast.LENGTH_SHORT ).show()
+            Log.d(TAG, "Check Box is a box, so we give it a logcat.")
         }
 
         editText.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable?) {
                 textView.text = s?.toString()?:"You have no input"
+                Log.d(TAG, "Finish editing.")
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
+                Log.d(TAG, "Before editing.")
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.d(TAG, "Editing.")
             }
         })
 
         imageView.setOnClickListener {
             Toast.makeText(this, "Pat the Shiba's head.", Toast.LENGTH_SHORT ).show()
+            Log.d(TAG, "We shouldn't be obsessed with the puppy.")
         }
     }
 
