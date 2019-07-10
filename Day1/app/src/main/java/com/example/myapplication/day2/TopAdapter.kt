@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.day2
 
 import android.os.Build
 import android.support.v7.widget.RecyclerView
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.myapplication.R
 
 class TopAdapter(var list: ArrayList<HotEvent>) : RecyclerView.Adapter<TopAdapter.ViewHolder>() {
 

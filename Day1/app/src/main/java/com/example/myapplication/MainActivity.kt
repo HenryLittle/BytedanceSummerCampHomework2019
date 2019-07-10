@@ -16,6 +16,8 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
+import com.example.myapplication.day2.topRankIntent
+import com.example.myapplication.day3.animIntent
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var count : Int = 0
@@ -122,8 +124,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_top_rank -> {
                 startActivity(topRankIntent())
             }
-            R.id.nav_slideshow -> {
-
+            R.id.nav_anim_test -> {
+                startActivity(animIntent())
             }
             R.id.nav_tools -> {
 

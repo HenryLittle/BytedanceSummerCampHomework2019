@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.day2
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

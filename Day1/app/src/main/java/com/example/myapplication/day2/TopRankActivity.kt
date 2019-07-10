@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.day2
 
 import android.app.Activity
 import android.content.Context
@@ -12,11 +12,8 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import com.example.myapplication.R
 
-
-fun Context.topRankIntent(): Intent {
-    return Intent(this, TopRankActivity::class.java)
-}
 
 class TopRankActivity : AppCompatActivity() {
 
@@ -66,4 +63,9 @@ class TopRankActivity : AppCompatActivity() {
         if (item?.itemId == android.R.id.home) finish()
         return super.onOptionsItemSelected(item)
     }
+
+}
+
+fun Context.topRankIntent(): Intent {
+    return Intent(this, TopRankActivity::class.java)
 }
