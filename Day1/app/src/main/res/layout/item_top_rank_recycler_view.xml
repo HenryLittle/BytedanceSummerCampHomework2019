@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/top_rank_item_height"
         android:background="@color/colorTopRankBack">
 
@@ -12,6 +12,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhiteNumberText"
             android:id="@+id/item_top_rank_number"
+            android:textStyle="italic"
             android:textSize="@dimen/top_rank_number_text"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/guideline"
