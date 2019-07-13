@@ -128,9 +128,9 @@ public class Clock extends View {
         mCenterY = halfWidth;
         mRadius = halfWidth;
 
-        this.innerRadius = (int)(mRadius * 0.02);
+        this.innerRadius = (int)(mRadius * 0.035);
         this.outerWidth = 10f;
-        this.outerRadius = (int)(mRadius * 0.022 + outerWidth / 2.0);
+        this.outerRadius = (int)(mRadius * 0.037 + outerWidth / 2.0);
 
         if (mShowAnalog) {
             drawDegrees(canvas);
