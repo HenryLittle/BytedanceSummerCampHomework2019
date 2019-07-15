@@ -7,11 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.byted.camp.todolist.NoteOperator;
 import com.byted.camp.todolist.R;
 import com.byted.camp.todolist.TodoListViewModel;
-import com.byted.camp.todolist.TodoRepository;
-import com.byted.camp.todolist.beans.Note;
 import com.byted.camp.todolist.db.room.TodoEntity;
 
 import java.util.ArrayList;

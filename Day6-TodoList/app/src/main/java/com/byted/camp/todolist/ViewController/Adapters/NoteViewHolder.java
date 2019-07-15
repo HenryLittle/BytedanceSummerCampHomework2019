@@ -10,14 +10,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.byted.camp.todolist.MainActivity;
-import com.byted.camp.todolist.NoteOperator;
 import com.byted.camp.todolist.R;
 import com.byted.camp.todolist.TodoListViewModel;
-import com.byted.camp.todolist.TodoRepository;
-import com.byted.camp.todolist.beans.Note;
 import com.byted.camp.todolist.beans.State;
 import com.byted.camp.todolist.db.room.TodoEntity;
 
