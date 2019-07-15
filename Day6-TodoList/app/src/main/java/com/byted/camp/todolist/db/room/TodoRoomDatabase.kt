@@ -33,17 +33,17 @@ abstract class TodoRoomDatabase : RoomDatabase() {
                 synchronized(TodoRoomDatabase::class.java) {
                     if (INSTANCE == null) {
                         // Create database
-                        INSTANCE = Room.databaseBuilder<TodoRoomDatabase>(context.applicationContext,
-                                TodoRoomDatabase::class.java!!, "todo_list_database")
+                        INSTANCE = Room.databaseBuilder(context.applicationContext,
+                                TodoRoomDatabase::class.java, "todo_list_database")
                                 .fallbackToDestructiveMigrationOnDowngrade() // we just care about upgrade yet
-                                //                            .fallbackToDestructiveMigration() // destructive upgrade
+                                // .fallbackToDestructiveMigration() // destructive upgrade
                                 .addMigrations(MIGRATION_1_2)
                                 .addCallback(populateCallback)
                                 .build()
                     }
                 }
             }
-            return INSTANCE
+            return INSTANCE!!
         }
 
         private val populateCallback = object : RoomDatabase.Callback() {

@@ -1,13 +1,12 @@
-package com.byted.camp.todolist.ViewController.Adapters
+package com.byted.camp.todolist.viewController.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 
 
 import com.byted.camp.todolist.R
-import com.byted.camp.todolist.ViewModel.TodoListViewModel
+import com.byted.camp.todolist.viewModel.TodoListViewModel
 import com.byted.camp.todolist.db.room.TodoEntity
 
 import java.util.ArrayList

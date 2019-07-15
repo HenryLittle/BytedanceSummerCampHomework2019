@@ -1,4 +1,4 @@
-package com.byted.camp.todolist.ViewController.Adapters
+package com.byted.camp.todolist.viewController.adapters
 
 import android.graphics.Color
 import android.graphics.Paint
@@ -7,19 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.widget.CheckBox
-import android.widget.CompoundButton
 import android.widget.TextView
 
 import com.byted.camp.todolist.R
-import com.byted.camp.todolist.ViewModel.TodoListViewModel
+import com.byted.camp.todolist.viewModel.TodoListViewModel
 import com.byted.camp.todolist.db.beans.State
 import com.byted.camp.todolist.db.room.TodoEntity
 
 import java.text.SimpleDateFormat
 import java.util.Locale
-
-import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Action
 
 /**
  * Created on 2019/1/23.
@@ -47,7 +43,7 @@ class NoteViewHolder(itemView: View, private val viewModel: TodoListViewModel) :
 
         checkBox.setOnCheckedChangeListener(null)
         checkBox.isChecked = note.state === State.DONE
-        checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
             note.state = if (isChecked) State.DONE else State.TODO
             val d = viewModel.update(note).subscribe { Log.d("[BIND_LIVE]", "update success") }
         }

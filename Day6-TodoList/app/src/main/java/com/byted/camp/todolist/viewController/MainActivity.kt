@@ -1,4 +1,4 @@
-package com.byted.camp.todolist.ViewController
+package com.byted.camp.todolist.viewController
 
 import android.app.Activity
 import android.content.Intent
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -17,25 +16,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.byted.camp.todolist.R
-import com.byted.camp.todolist.ViewModel.TodoListViewModel
-import com.byted.camp.todolist.db.beans.Note
+import com.byted.camp.todolist.viewModel.TodoListViewModel
 import com.byted.camp.todolist.db.room.TodoEntity
-import com.byted.camp.todolist.ViewController.debug.DebugActivity
-import com.byted.camp.todolist.ViewController.Adapters.NoteListAdapter
+import com.byted.camp.todolist.viewController.debug.DebugActivity
+import com.byted.camp.todolist.viewController.adapters.NoteListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Action
 
 class MainActivity : AppCompatActivity() {
 
     private var recyclerView: RecyclerView? = null
     private var notesAdapter: NoteListAdapter? = null
-    internal var compositeDisposable = CompositeDisposable()
+    private var compositeDisposable = CompositeDisposable()
 
-    //    private TodoDbHelper dbHelper;
-    //    private SQLiteDatabase database;
 
     private var todoListViewModel: TodoListViewModel? = null
 
@@ -52,11 +46,8 @@ class MainActivity : AppCompatActivity() {
                     REQUEST_CODE_ADD)
         }
 
-        //        dbHelper = new TodoDbHelper(this);
-        //        database = dbHelper.getWritableDatabase();
-
         // acquire the ViewModel
-        todoListViewModel = ViewModelProviders.of(this).get(TodoListViewModel::class.java!!)
+        todoListViewModel = ViewModelProviders.of(this).get(TodoListViewModel::class.java)
 
         // init the recyclerView
         recyclerView = findViewById(R.id.list_todo)
@@ -64,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 RecyclerView.VERTICAL, false)
         recyclerView!!.addItemDecoration(
                 DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        notesAdapter = NoteListAdapter(todoListViewModel)
+        notesAdapter = NoteListAdapter(todoListViewModel!!)
         recyclerView!!.adapter = notesAdapter
 
         todoListViewModel!!.allTodos.observe(this, Observer { todoEntities ->
@@ -79,10 +70,6 @@ class MainActivity : AppCompatActivity() {
         if (!compositeDisposable.isDisposed) {
             compositeDisposable.dispose()
         }
-        //        database.close();
-        //        database = null;
-        //        dbHelper.close();
-        //        dbHelper = null;
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -122,39 +109,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    @Deprecated("")
-    private fun deleteNote(note: Note) {
-        //        if (database == null) {
-        //            return;
-        //        }
-        //        int rows = database.delete(TodoNote.TABLE_NAME,
-        //                TodoNote._ID + "=?",
-        //                new String[]{String.valueOf(note.id)});
-        //        if (rows > 0) {
-        //            // notesAdapter.refresh(loadNotesFromDatabase());
-        //        }
-    }
-
-    @Deprecated("")
-    private fun updateNode(note: Note) {
-        //        if (database == null) {
-        //            return;
-        //        }
-        //        ContentValues values = new ContentValues();
-        //        values.put(TodoNote.COLUMN_STATE, note.getState().intValue);
-        //
-        //        int rows = database.update(TodoNote.TABLE_NAME, values,
-        //                TodoNote._ID + "=?",
-        //                new String[]{String.valueOf(note.id)});
-        //        if (rows > 0) {
-        //            // notesAdapter.refresh(loadNotesFromDatabase());
-        //        }
-    }
-
     companion object {
 
-        private val REQUEST_CODE_ADD = 1002
-        val TODO_ITEM_EXTRA = "todo_item"
+        private const val REQUEST_CODE_ADD = 1002
+        const val TODO_ITEM_EXTRA = "todo_item"
     }
 
 }

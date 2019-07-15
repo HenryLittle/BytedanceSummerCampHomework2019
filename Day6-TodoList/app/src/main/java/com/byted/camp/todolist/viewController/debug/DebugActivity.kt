@@ -1,6 +1,7 @@
-package com.byted.camp.todolist.ViewController.debug
+package com.byted.camp.todolist.viewController.debug
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Environment
@@ -104,9 +105,10 @@ class DebugActivity : AppCompatActivity() {
                 fileInputStream = FileInputStream(file)
 
                 val buffer = ByteArray(1024)
-                var n: Int
-                while ((n = fileInputStream.read(buffer)) != -1) {
+                var n: Int = fileInputStream.read(buffer)
+                while (n != -1) {
                     fileContent.append(String(buffer, 0, n))
+                    n = fileInputStream.read(buffer)
                 }
             } catch (e: FileNotFoundException) {
                 e.printStackTrace()
@@ -128,7 +130,7 @@ class DebugActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
                                             grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (permissions.size == 0 || grantResults.size == 0) {
+        if (permissions.isEmpty() || grantResults.isEmpty()) {
             return
         }
         if (requestCode == REQUEST_CODE_STORAGE_PERMISSION) {
@@ -145,7 +147,7 @@ class DebugActivity : AppCompatActivity() {
 
     companion object {
 
-        private val REQUEST_CODE_STORAGE_PERMISSION = 1001
+        private const val REQUEST_CODE_STORAGE_PERMISSION = 1001
 
         private fun getCanonicalPath(dirMap: Map<String, File>): String {
             val sb = StringBuilder()

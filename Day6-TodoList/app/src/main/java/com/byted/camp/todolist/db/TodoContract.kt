@@ -11,7 +11,7 @@ object TodoContract {
 
     val SQL_CREATE_NOTES = (
             "CREATE TABLE " + TodoNote.TABLE_NAME
-                    + "(" + TodoNote._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + "(" + TodoNote.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + TodoNote.COLUMN_DATE + " INTEGER, "
                     + TodoNote.COLUMN_STATE + " INTEGER, "
                     + TodoNote.COLUMN_CONTENT + " TEXT, "
@@ -22,12 +22,12 @@ object TodoContract {
 
     class TodoNote : BaseColumns {
         companion object {
-            val TABLE_NAME = "note"
-
-            val COLUMN_DATE = "date"
-            val COLUMN_STATE = "state"
-            val COLUMN_CONTENT = "content"
-            val COLUMN_PRIORITY = "priority"
+            const val TABLE_NAME = "note"
+            const val ID = "id"
+            const val COLUMN_DATE = "date"
+            const val COLUMN_STATE = "state"
+            const val COLUMN_CONTENT = "content"
+            const val COLUMN_PRIORITY = "priority"
         }
     }
 

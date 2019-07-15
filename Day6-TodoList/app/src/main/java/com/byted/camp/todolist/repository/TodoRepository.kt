@@ -1,4 +1,4 @@
-package com.byted.camp.todolist.Repository
+package com.byted.camp.todolist.repository
 
 import android.app.Application
 

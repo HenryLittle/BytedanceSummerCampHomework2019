@@ -1,10 +1,10 @@
-package com.byted.camp.todolist.ViewModel
+package com.byted.camp.todolist.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 
-import com.byted.camp.todolist.Repository.TodoRepository
+import com.byted.camp.todolist.repository.TodoRepository
 import com.byted.camp.todolist.db.room.TodoEntity
 
 import io.reactivex.Completable
@@ -12,13 +12,12 @@ import io.reactivex.Completable
 class TodoListViewModel(application: Application) : AndroidViewModel(application) {
     // Never pass context into ViewModel instances.
     // Do not store Activity, Fragment, or View instances or their Context in the ViewModel.
-    private val mRepository: TodoRepository
+    private val mRepository: TodoRepository = TodoRepository(application)
 
 
     val allTodos: LiveData<List<TodoEntity>>
 
     init {
-        mRepository = TodoRepository(application)
         allTodos = mRepository.allTodos
     }
 

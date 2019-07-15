@@ -1,4 +1,4 @@
-package com.byted.camp.todolist.ViewController
+package com.byted.camp.todolist.viewController
 
 import android.app.Activity
 import android.content.Context

@@ -8,7 +8,7 @@ import com.byted.camp.todolist.db.beans.State
 import java.util.Date
 
 
-object Converters {
+class Converters {
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {
         return if (value == null) null else Date(value)
