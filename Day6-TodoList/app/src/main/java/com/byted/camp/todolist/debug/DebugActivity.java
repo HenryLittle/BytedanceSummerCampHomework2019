@@ -15,6 +15,9 @@ import android.widget.Toast;
 import com.byted.camp.todolist.R;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -31,6 +34,8 @@ public class DebugActivity extends AppCompatActivity {
 
         final Button printBtn = findViewById(R.id.btn_print_path);
         final TextView pathText = findViewById(R.id.text_path);
+        final TextView fileText = findViewById(R.id.text_file_content);
+        final Button fileButton = findViewById(R.id.btn_file);
         printBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +61,57 @@ public class DebugActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(DebugActivity.this,
                         new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         REQUEST_CODE_STORAGE_PERMISSION);
+            }
+        });
+
+        fileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                File file = new File(getCacheDir(), "temp.txt");
+                FileOutputStream fileOutputStream = null;
+                try {
+                    fileOutputStream = new FileOutputStream(file);
+                    fileOutputStream.write("This is some random text!".getBytes());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (fileOutputStream != null) {
+                            fileOutputStream.close();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                FileInputStream fileInputStream = null;
+                StringBuilder fileContent = new StringBuilder();
+                try {
+                    fileInputStream = new FileInputStream(file);
+
+                    byte[] buffer = new byte[1024];
+                    int n;
+                    while ((n = fileInputStream.read(buffer)) != -1)
+                    {
+                        fileContent.append(new String(buffer, 0, n));
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (fileInputStream != null) {
+                            fileInputStream.close();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                fileText.setText(fileContent.toString());
             }
         });
     }
