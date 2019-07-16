@@ -45,6 +45,7 @@ class ImageActivity : AppCompatActivity() {
             .error(R.drawable.ic_error_black_24dp)
             .into(imageView)
         pages.add(imageView)
+        adapter.notifyDataSetChanged()
     }
 
 
