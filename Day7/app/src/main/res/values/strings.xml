@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Media Exp</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="image_btn_text">Image Activity</string>
+    <string name="video_btn_text">Video Activity</string>
+
+    <string name="permission_msg">Storage Permission is needed for reading file.</string>
+    <string name="continue_button">Continue</string>
+    <string name="go_to_setting_button">Go to settings</string>
+    <string name="negative_button">Cancel</string>
+
+    <string name="media_play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="back">back</string>
+    <string name="fullScreen">FullScreen</string>
+    <string name="smallScreen">MiniPlayer</string>
+</resources>
